@@ -1,5 +1,5 @@
-pipeline {
-    agent any
+properties([pipelineTriggers([githubPush()])])
+node('linux') {
     stage('Unit Tests') {
         git 'https://github.com/SurlyIndeed/java-project.git'
         sh 'ant -f test.xml -v'
